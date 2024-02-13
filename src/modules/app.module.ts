@@ -7,11 +7,13 @@ import { Note } from './note/entities/note.entity';
 import { AuthModule } from './auth/auth.module';
 import { NoteModule } from './note/note.module';
 import { UserModule } from './user/user.module';
+import configSchema from '../config/config.schema';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
+      validationSchema: configSchema,
     }),
     TypeOrmModule.forRootAsync({
       useFactory: (configService: ConfigService) => ({
